@@ -1,24 +1,17 @@
 .section-container {
   .form-container {
-    //  border: 1px solid blue;
     padding: 1rem 0;
     background: #f4f4f4;
-    border-bottom: 1px solid rgb(220, 213, 213);
+    border-bottom: 1px solid $border-color;
 
     form {
       width: 650px;
       margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-
-      //  font-size: $p-size;
-
-      // border: 1px solid red;
+      @include flex(space-between);
 
       .option-content,
       .description-content,
       .value-content {
-        //   border: 1px solid blue;
         display: flex;
         flex-direction: column;
 
@@ -27,7 +20,6 @@
         span {
           padding: 0.3rem 0.5rem 0;
           font-size: 0.8rem;
-          //  text-align: center;
           color: red;
         }
 
@@ -38,9 +30,6 @@
           position: absolute;
           top: 130%;
           left: 1%;
-          //  background: white;
-          //  border: 1px solid rgb(220, 213, 213);
-          //  border: 1px solid red;
           border-radius: 5px;
           padding-bottom: 2rem;
         }
@@ -58,7 +47,7 @@
         font-size: 1rem;
         outline: none;
         cursor: pointer;
-        border: 1px solid rgb(220, 213, 213);
+        border: 1px solid $border-color;
         background: white;
         color: grey;
       }
@@ -69,12 +58,12 @@
         font-size: 1rem;
         padding: 0.5rem 0.3rem;
         border-radius: 5px;
-        border: 1px solid rgb(220, 213, 213);
+        border: 1px solid $border-color;
       }
 
       .value {
         width: 70px;
-        border: 1px solid rgb(220, 213, 213);
+        border: 1px solid $border-color;
         font-size: 1rem;
         padding: 0.5rem 0.3rem;
         border-radius: 5px;
@@ -83,8 +72,6 @@
       button {
         padding: 0.3rem 0.5rem;
         border-radius: 5px;
-        //   border: 1px solid red;
-        //   color: red;
         font-size: 1rem;
         cursor: pointer;
         color: #f4f4f4;
@@ -98,13 +85,12 @@
   .display-information {
     width: 1000px;
     margin: 5rem auto 0;
-    display: flex;
-    justify-content: space-between;
+    @include flex(space-between);
 
     h3 {
       text-transform: uppercase;
       padding-bottom: 1.5rem;
-      border-bottom: 1px solid rgb(220, 213, 213);
+      border-bottom: 1px solid $border-color;
     }
 
     .in {
@@ -120,10 +106,8 @@
 
     .item-list {
       padding: 0.8rem 0.5rem;
-      // border: 1px solid red;
-      display: flex;
-      justify-content: space-between;
-      border-bottom: 1px solid rgb(220, 213, 213);
+      @include flex(space-between);
+      border-bottom: 1px solid $border-color;
 
       .date {
         color: grey;

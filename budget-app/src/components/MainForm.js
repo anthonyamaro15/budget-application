@@ -6,16 +6,16 @@ import * as yup from "yup";
 const MainForm = ({ passData, touched, errors, status }) => {
   const [data, setData] = useState([]);
 
-  useEffect(() => {
-    const newData = JSON.parse(localStorage.getItem("data"));
-    if (newData) {
-      setData(newData);
-    }
-  }, []);
+  //   useEffect(() => {
+  //     const newData = JSON.parse(localStorage.getItem("data"));
+  //     if (newData) {
+  //       setData(newData);
+  //     }
+  //   }, []);
 
-  useEffect(() => {
-    localStorage.setItem("data", JSON.stringify(data));
-  }, [data]);
+  //   useEffect(() => {
+  //     localStorage.setItem("data", JSON.stringify(data));
+  //   }, [data]);
 
   useEffect(() => {
     status && setData([...data, status]);
