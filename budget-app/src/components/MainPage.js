@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Navbar from "./Navbar";
 import Content from "./Content";
 
@@ -27,6 +27,14 @@ const MainPage = () => {
     return date;
   };
 
+  const delItem = id => {
+    const del = data.filter(item => item.id !== id);
+    console.log(del);
+    setData(del);
+  };
+
+  //   }
+
   const dateCreated = getDate();
   return (
     <div>
@@ -37,7 +45,12 @@ const MainPage = () => {
         avalibleNow={avalibleNow}
         dateCreated={dateCreated}
       />
-      <Content passData={passData} income={income} expense={expense} />
+      <Content
+        passData={passData}
+        income={income}
+        expense={expense}
+        delItem={delItem}
+      />
     </div>
   );
 };

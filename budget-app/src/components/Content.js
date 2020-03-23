@@ -3,12 +3,16 @@ import MainForm from "./MainForm";
 import DisplayIncome from "./DisplayIncome";
 import DisplayExpense from "./DisplayExpense";
 
-const Content = ({ passData, income, expense }) => {
+const Content = ({ passData, income, expense, delItem }) => {
   const displayIn = income.map(item => (
-    <DisplayIncome key={item.id} data={item} />
+    <DisplayIncome key={item.id} data={item} delItem={() => delItem(item.id)} />
   ));
   const displayEx = expense.map(item => (
-    <DisplayExpense key={item.id} data={item} />
+    <DisplayExpense
+      key={item.id}
+      data={item}
+      delItem={() => delItem(item.id)}
+    />
   ));
   return (
     <section className="section-container">

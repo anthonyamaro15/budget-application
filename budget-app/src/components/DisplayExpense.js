@@ -1,7 +1,7 @@
 import React from "react";
 import { TiDeleteOutline } from "react-icons/ti";
 
-const DisplayExpense = ({ data }) => {
+const DisplayExpense = ({ data, delItem }) => {
   let date = new Date().toLocaleDateString();
 
   return (
@@ -10,7 +10,7 @@ const DisplayExpense = ({ data }) => {
       <span className="date">{`created ${date}`}</span>
       <div className="del-container">
         <span className="actual-value-expense">+ {data.value}</span>
-        <span className="icon">
+        <span className="icon" onClick={delItem}>
           <TiDeleteOutline />
         </span>
       </div>
