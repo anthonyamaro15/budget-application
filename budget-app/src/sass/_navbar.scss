@@ -1,0 +1,48 @@
+header {
+  .header-container {
+    height: 27vh;
+    display: flex;
+    background-image: linear-gradient(
+      to right bottom,
+      #15191e,
+      #393e42,
+      #62666b,
+      #8e9296,
+      #bcc0c3
+    );
+    color: #f4f4f4;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .avalible {
+    font-size: $p-size;
+    letter-spacing: 1px;
+  }
+
+  .show-total {
+    font-size: 3rem;
+    margin: 1.5rem 0;
+    font-weight: 300;
+  }
+
+  .shared {
+    width: 350px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    padding: 0.8rem 1rem;
+    text-transform: uppercase;
+    border-radius: 5px;
+  }
+
+  .income {
+    background: rgb(13, 100, 159);
+  }
+
+  .expense {
+    background: rgb(238, 59, 59);
+  }
+}
