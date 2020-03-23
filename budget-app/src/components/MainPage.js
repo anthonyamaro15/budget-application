@@ -33,8 +33,6 @@ const MainPage = () => {
     setData(del);
   };
 
-  //   }
-
   const dateCreated = getDate();
   return (
     <div>
