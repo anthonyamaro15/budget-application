@@ -1,15 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import Content from "./Content";
 
 const MainPage = () => {
   const [data, setData] = useState([]);
-  const income = data.filter(inc => inc.options === "income");
-  const expense = data.filter(ex => ex.options === "expense");
+
+  useEffect(() => {
+    //  console.log(data);
+  }, [data]);
 
   const passData = arr => {
     setData(arr);
   };
+
+  const income = data.filter(inc => inc.options === "income");
+  const expense = data.filter(ex => ex.options === "expense");
 
   const getTotals = arr => {
     const totalIncome = arr.reduce((acc, curr) => {
