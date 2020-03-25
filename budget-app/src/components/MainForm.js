@@ -6,7 +6,7 @@ import * as yup from "yup";
 const MainForm = ({ touched, errors, status, sharedData }) => {
   useEffect(() => {
     status && sharedData(status);
-  }, [status]);
+  }, [status, sharedData]);
 
   return (
     <div className="form-container">
