@@ -1,29 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { withFormik, Field, Form } from "formik";
 import * as yup from "yup";
 
-const MainForm = ({ passData, touched, errors, status }) => {
-  const [data, setData] = useState([]);
-
-  //   useEffect(() => {
-  //     const newData = JSON.parse(localStorage.getItem("data"));
-  //     if (newData) {
-  //       setData(newData);
-  //     }
-  //   }, []);
-
-  //   useEffect(() => {
-  //     localStorage.setItem("data", JSON.stringify(data));
-  //   }, [data]);
-
+const MainForm = ({ touched, errors, status, sharedData }) => {
   useEffect(() => {
-    status && setData([...data, status]);
-  }, [status, data]);
-
-  useEffect(() => {
-    passData(data);
-  }, [data, passData]);
+    status && sharedData(status);
+  }, [status]);
 
   return (
     <div className="form-container">

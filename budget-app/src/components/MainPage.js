@@ -1,20 +1,28 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useReducer } from "react";
+import { initialValue, reducer } from "../reducers/reducer";
 import Navbar from "./Navbar";
 import Content from "./Content";
 
 const MainPage = () => {
-  const [data, setData] = useState([]);
+  const [state, dispatch] = useReducer(reducer, initialValue);
+  //   const [data, setData] = useState([]);
 
-  useEffect(() => {
-    //  console.log(data);
-  }, [data]);
+  //   useEffect(() => {
+  //     //  console.log(data);
+  //   }, [data]);
 
-  const passData = arr => {
-    setData(arr);
+  //   const passData = arr => {
+  //     setData(arr);
+  //   };
+  console.log(state);
+  //   console.log(data);
+  const sharedData = newData => {
+    dispatch({ type: "ADD_DATA", payload: newData });
+    console.log("payload data ", newData);
   };
 
-  const income = data.filter(inc => inc.options === "income");
-  const expense = data.filter(ex => ex.options === "expense");
+  const income = state.data.filter(inc => inc.options === "income");
+  const expense = state.data.filter(ex => ex.options === "expense");
 
   const getTotals = arr => {
     const totalIncome = arr.reduce((acc, curr) => {
@@ -32,27 +40,28 @@ const MainPage = () => {
     return date;
   };
 
-  const delItem = id => {
-    const del = data.filter(item => item.id !== id);
-    console.log(del);
-    setData(del);
-  };
+  //   const delItem = id => {
+  //     const del = data.filter(item => item.id !== id);
+  //     console.log(del);
+  //    //  setData(del);
+  //   };
 
   const dateCreated = getDate();
   return (
     <div>
       <Navbar
-        data={data}
+        data={state.data}
         getTotalExpense={getTotalExpense}
         getTotalIncome={getTotalIncome}
         avalibleNow={avalibleNow}
         dateCreated={dateCreated}
       />
       <Content
-        passData={passData}
+        //   passData={passData}
         income={income}
         expense={expense}
-        delItem={delItem}
+        //   delItem={delItem}
+        sharedData={sharedData}
       />
     </div>
   );
