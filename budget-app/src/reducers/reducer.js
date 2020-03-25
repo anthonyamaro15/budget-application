@@ -9,6 +9,10 @@ export const reducer = (state, action) => {
         ...state,
         data: [...state.data, action.payload]
       };
+    case "DELETE_ITEM":
+      return {
+        data: action.payload
+      };
     default:
       return {
         state
