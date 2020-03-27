@@ -3,10 +3,10 @@ import { v4 as uuidv4 } from "uuid";
 import { withFormik, Field, Form } from "formik";
 import * as yup from "yup";
 
-const MainForm = ({ touched, errors, status, sharedData }) => {
+const MainForm = ({ touched, errors, status, addData }) => {
   useEffect(() => {
-    status && sharedData(status);
-  }, [status, sharedData]);
+    status && addData(status);
+  }, [status, addData]);
 
   return (
     <div className="form-container">

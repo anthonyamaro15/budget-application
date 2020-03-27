@@ -1,8 +1,8 @@
-export const initialValue = {
+const initialValue = {
   data: []
 };
 
-export const reducer = (state, action) => {
+export const dataReducer = (state = initialValue, action) => {
   switch (action.type) {
     case "ADD_DATA":
       return {
@@ -10,12 +10,12 @@ export const reducer = (state, action) => {
         data: [...state.data, action.payload]
       };
     case "DELETE_ITEM":
+      const newData = state.data.filter(item => item.id !== action.payload.id);
       return {
-        data: action.payload
+        ...state,
+        data: newData
       };
     default:
-      return {
-        state
-      };
+      return state;
   }
 };
