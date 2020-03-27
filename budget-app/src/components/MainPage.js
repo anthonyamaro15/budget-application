@@ -1,22 +1,12 @@
-import React, { useReducer } from "react";
-import { initialValue, reducer } from "../reducers/reducer";
+import React from "react";
+import { connect } from "react-redux";
+import { addData, delItem } from "../actions/index";
 import Navbar from "./Navbar";
 import Content from "./Content";
 
-const MainPage = () => {
-  const [state, dispatch] = useReducer(reducer, initialValue);
-
-  const sharedData = newData => {
-    dispatch({ type: "ADD_DATA", payload: newData });
-  };
-
-  const delItem = id => {
-    const del = state.data.filter(item => item.id !== id);
-    dispatch({ type: "DELETE_ITEM", payload: del });
-  };
-
-  const income = state.data.filter(inc => inc.options === "income");
-  const expense = state.data.filter(ex => ex.options === "expense");
+const MainPage = ({ data, addData, delItem }) => {
+  const income = data.filter(inc => inc.options === "income");
+  const expense = data.filter(ex => ex.options === "expense");
 
   const getTotals = arr => {
     const totalIncome = arr.reduce((acc, curr) => {
@@ -42,7 +32,7 @@ const MainPage = () => {
   return (
     <div>
       <Navbar
-        data={state.data}
+        data={data}
         getTotalExpense={getTotalExpense}
         getTotalIncome={getTotalIncome}
         avalibleNow={avalibleNow}
@@ -52,10 +42,16 @@ const MainPage = () => {
         income={income}
         expense={expense}
         delItem={delItem}
-        sharedData={sharedData}
+        addData={addData}
       />
     </div>
   );
 };
 
-export default MainPage;
+const mapStateProps = ({ dataReducer }) => {
+  return {
+    data: dataReducer.data
+  };
+};
+
+export default connect(mapStateProps, { delItem, addData })(MainPage);
