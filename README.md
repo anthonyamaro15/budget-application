@@ -1,2 +1,2 @@
 # budget-application
-react, formik, yup
+react, redux hooks, formik, yup
