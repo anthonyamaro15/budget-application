@@ -1,10 +1,25 @@
 import React from "react";
-import { connect } from "react-redux";
-import { addData, delItem } from "../actions/index";
+import { useDispatch, useSelector } from "react-redux";
 import Navbar from "./Navbar";
 import Content from "./Content";
 
-const MainPage = ({ data, addData, delItem }) => {
+const MainPage = () => {
+  const dispatch = useDispatch();
+  const reducer = useSelector(state => ({
+    ...state.dataReducer
+  }));
+
+  const { data } = reducer;
+  console.log(data);
+
+  const addData = item => {
+    dispatch({ type: "ADD_DATA", payload: item });
+  };
+
+  const delItem = item => {
+    dispatch({ type: "DELETE_ITEM", payload: item });
+  };
+
   const income = data.filter(inc => inc.options === "income");
   const expense = data.filter(ex => ex.options === "expense");
 
@@ -48,10 +63,4 @@ const MainPage = ({ data, addData, delItem }) => {
   );
 };
 
-const mapStateProps = ({ dataReducer }) => {
-  return {
-    data: dataReducer.data
-  };
-};
-
-export default connect(mapStateProps, { delItem, addData })(MainPage);
+export default MainPage;
