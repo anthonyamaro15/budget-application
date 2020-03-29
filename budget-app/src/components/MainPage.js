@@ -10,7 +10,6 @@ const MainPage = () => {
   }));
 
   const { data } = reducer;
-  console.log(data);
 
   const addData = item => {
     dispatch({ type: "ADD_DATA", payload: item });
