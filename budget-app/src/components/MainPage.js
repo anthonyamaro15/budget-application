@@ -5,24 +5,24 @@ import Content from "./Content";
 
 const MainPage = () => {
   const dispatch = useDispatch();
-  const reducer = useSelector(state => ({
-    ...state.dataReducer
+  const reducer = useSelector((state) => ({
+    ...state.dataReducer,
   }));
 
   const { data } = reducer;
 
-  const addData = item => {
+  const addData = (item) => {
     dispatch({ type: "ADD_DATA", payload: item });
   };
 
-  const delItem = item => {
+  const delItem = (item) => {
     dispatch({ type: "DELETE_ITEM", payload: item });
   };
 
-  const income = data.filter(inc => inc.options === "income");
-  const expense = data.filter(ex => ex.options === "expense");
+  const income = data.filter((inc) => inc.options === "income");
+  const expense = data.filter((ex) => ex.options === "expense");
 
-  const getTotals = arr => {
+  const getTotals = (arr) => {
     const totalIncome = arr.reduce((acc, curr) => {
       return curr.value + acc;
     }, 0);
